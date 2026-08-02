@@ -1,0 +1,29 @@
+# attention_from_scratch — Phase 1 (NumPy) dependencies
+# =====================================================
+# Deliberately minimal. The whole point of this project is to hand-write the
+# operators, so nothing beyond NumPy is allowed to do any of the real work.
+#
+#   numpy  — the ONLY runtime dependency of attention.py
+#   torch  — used ONLY by test_attention.py as a numerical oracle.
+#            CPU wheels are enough: torch never runs any of the code being
+#            learned, it only produces reference values and reference gradients.
+#
+# Requires Python >= 3.10 (attention.py uses PEP 604 `X | None` annotations).
+#
+# Install:
+#     pip install -r requirements.txt
+#
+# The --extra-index-url below makes Linux/Windows pull the ~180 MB CPU-only
+# torch wheel instead of the ~2.5 GB CUDA one. macOS wheels are CPU-only
+# already, hence the platform markers.
+#
+# Phase 3 note: when you get to CUDA, you will want a CUDA-enabled torch to
+# compare your kernels against. Do that in a SEPARATE env — do not loosen this
+# one, or Phase 1's reference numbers stop being reproducible.
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+numpy==1.26.4
+
+torch==2.2.0+cpu ; sys_platform != "darwin"
+torch==2.2.0     ; sys_platform == "darwin"

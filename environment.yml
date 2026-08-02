@@ -1,0 +1,18 @@
+# Dedicated conda environment for attention_from_scratch.
+#
+#   conda env create -f environment.yml
+#   conda activate attn-scratch
+#   python -m unittest test_attention -v
+#
+# Package versions live in requirements.txt so there is exactly one place to
+# change them. Update: conda env update -f environment.yml --prune
+name: attn-scratch
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r requirements.txt

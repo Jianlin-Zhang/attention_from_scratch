@@ -219,3 +219,13 @@ __marimo__/
 
 .vscode/
 .claude/
+
+# Kiro：本地设置（lsp.json 等）不入库，但协作规则必须跟着仓库走。
+# 注意用 .kiro/* 而不是 .kiro/ —— 后者会整目录排除，导致下面的例外规则失效。
+.kiro/*
+!.kiro/steering/
+
+# Phase 2 / Phase 3 构建产物
+*.obj
+*.d
+compile_commands.json
